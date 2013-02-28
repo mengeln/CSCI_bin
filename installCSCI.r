@@ -16,6 +16,7 @@ installCSCI <- function(){
   download.file("https://github.com/mengeln/CSCI_bin/archive/master.zip", tempfile)
   unzip(tempfile, exdir = tempdir)
   packages <- list.files(paste0(tempdir, "\\CSCI_bin-master"), full.names=TRUE)
+  packages <- packages[!grepl("installCSCI.r", packages)]
   install.packages(packages, repos=NULL)
   unlink(packages)
 }
